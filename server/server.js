@@ -9,8 +9,6 @@ logger.log('info', '[WINSTON] - log level: %s', process.env.LEVEL);
 
 const app = express();
 
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, '../views'));
 app.use(compression());
 app.use(express.static(path.join(__dirname, '../static')));
 app.use(bodyParser.json());
@@ -22,6 +20,8 @@ app.listen(port, () => {
   logger.log('info', '[EXPRESS] - listening port: %d', port);
 });
 
-app.use('/', require('./controllers/home'));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../static/index.html'));
+});
 
 module.exports = app;

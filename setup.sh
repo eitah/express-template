@@ -1,18 +1,18 @@
+# SERVER NODE MODULES
+# **************************************************************************** #
 npm i bluebird \
   body-parser \
   compression \
   express \
   mongoose \
   request \
-  pug \
   mongoose \
   winston --save
 
 npm i babel-cli \
   babel-eslint \
-  babel-plugin-transform-es2015-destructuring \
-  babel-plugin-transform-es2015-modules-commonjs \
-  babel-plugin-transform-object-rest-spread \
+  babel-preset-es2015 \
+  babel-preset-react \
   babel-preset-stage-0 \
   chai \
   chokidar-cli \
@@ -27,3 +27,13 @@ npm i babel-cli \
   nodemon \
   sinon \
   supertest --save-dev
+
+# CLIENT NODE MODULES
+# **************************************************************************** #
+npm i react \
+  react-dom \
+  isomorphic-fetch \
+  es6-promise --save
+
+npm install webpack \
+  babel-loader --save-dev

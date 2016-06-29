@@ -6,18 +6,18 @@ main:
 	@echo [main]
 	@echo Project: Template
 
-clean:
-	@echo [clean]
-	@rm -rf coverage dst logs temp
-	@mkdir logs temp
+ready:
+	@echo [ready]
+	@mkdir -p logs
 
 compile:
 	@echo [compile]
-	@$(BIN)/babel src -d dst -q
+	@$(BIN)/babel server -d dst -q
+	@$(BIN)/webpack
 
 lint:
 	@echo [lint]
-	@$(BIN)/eslint src test -f stylish --color
+	@$(BIN)/eslint client server test -f stylish --color
 
 tests:
 	@echo [tests]
@@ -25,6 +25,6 @@ tests:
 
 watch: all
 	@echo [watch]
-	@$(BIN)/chokidar 'src/**/*.js' 'test/**/*.js' -c 'make all'
+	@$(BIN)/chokidar 'client/**/*.js' 'server/**/*.js' 'test/**/*.js' -c 'make all'
 
-all: main clean compile lint tests
+all: main ready compile lint tests
